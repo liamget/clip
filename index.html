@@ -38,9 +38,8 @@
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
   <main class="px-3">
-	<img src="dall-e.jpeg" class="rounded mx-auto d-block img-thumbnail mb-2" alt="Dall-e">
+	<img src="dall-e.jpeg" class="rounded mx-auto d-block img-thumbnail mb-2" alt="Dall-e" width="250">
 	<h1 style="font-weight:800;" class="mb-3">
-		
 		Paste <em>la tranche</em>.
 	</h1>
 	
@@ -56,11 +55,11 @@
 	<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
 <script>
 	// Initialize Quill editor
-	var toolbarOptions = ['bold', 'italic', 'underline', 'strike'];
+	var toolbarOptions = [['bold', 'italic', 'underline', 'strike'],['link']];
 	var quill = new Quill('#editor', {
 		theme: 'snow',
 		modules: {
-			toolbar: false,
+			toolbar: toolbarOptions,
 		  },
 		placeholder: 'Paste the Google Docs text here...',
 	});
@@ -75,7 +74,12 @@
 					text += op.insert;
 				}
 				if (op.attributes && op.attributes.link) {
-					text += ` <${op.attributes.link}> `;
+					var urlPaste = op.attributes.link;
+					var urlObj = new URL(urlPaste);
+					var params = new URLSearchParams(urlObj.search);
+					var urlParam = params.get('url');
+					if (urlParam) { text += ` <` + decodeURIComponent(urlParam) + `> ` } else { text += ` <` + urlPaste + `> ` }
+					// text += ` <${op.attributes.link}> `;
 				}
 			}
 		});
@@ -83,6 +87,7 @@
 		document.getElementById('output').innerText = text;
 		
 	});
+
 	new ClipboardJS('#extract');
 </script>
 	</body>

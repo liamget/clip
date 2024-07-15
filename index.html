@@ -46,7 +46,7 @@
     </h1>
     
     <div id="editor"></div>
-    <button id="extract" class="btn btn-lg btn-primary my-3" data-clipboard-target="#output">Convert & Copy</button>
+    <button id="extract" class="btn btn-lg btn-primary my-3 btn-copy" data-clipboard-target="#output">Convert & Copy</button>
     <!-- <button id="clean-whitespace" class="btn btn-success" data-clipboard-target="#output">Clean Whitespace & Copy</button> -->
     <div id="output"></div>
     
@@ -87,17 +87,10 @@
     var text = text.replace(/\n/g, '\n\n');
     var cleanedText = text.replace(/(\n\s*){2,}/g, '\n\n');
     document.getElementById('output').innerText = cleanedText;
-  });
-
-  // Clean whitespace function
-  document.getElementById('clean-whitespace').addEventListener('click', function() {
-    var output = document.getElementById('output');
-    var text = output.innerText;
-    var cleanedText = text.replace(/(\n\s*){2,}/g, '\n\n');
-    output.innerText = cleanedText;
+    
   });
   
-  new ClipboardJS('.btn');
+  new ClipboardJS('.btn-copy');
 </script>
 </body>
 </html>

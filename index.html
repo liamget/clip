@@ -85,8 +85,9 @@
       }
     });
     var text = text.replace(/\n/g, '\n\n');
-    var cleanedText = text.replace(/(\n\s*){2,}/g, '\n\n');
-    document.getElementById('output').innerText = cleanedText;
+    var text = text.replace(/(\n\s*){2,}/g, '\n\n');
+    var text = text.replace(' : ', ' ');
+    document.getElementById('output').innerText = text;
     
   });
   

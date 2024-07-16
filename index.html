@@ -34,6 +34,9 @@
       right: 10px;
       z-index: 10;
     }
+    .ql-toolbar.ql-snow {
+      text-align: left;
+    }
   </style>
 </head>
 <body class="d-flex h-100 text-center">
@@ -57,7 +60,7 @@
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
 <script>
   // Initialize Quill editor
-  var toolbarOptions = [['bold', 'italic', 'underline', 'strike'],['link']];
+  var toolbarOptions = [['bold', 'italic', 'underline', 'strike'],['link'],['markdown']];
   var quill = new Quill('#editor', {
     theme: 'snow',
     modules: {

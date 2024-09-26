@@ -83,7 +83,8 @@
           var urlObj = new URL(urlPaste);
           var params = new URLSearchParams(urlObj.search);
           var urlParam = params.get('url');
-          if (urlParam) { text += ` <` + decodeURIComponent(urlParam) + `> ` } else { text += ` <` + urlPaste + `> ` }
+          // if (urlParam) { text += ` <` + decodeURIComponent(urlParam) + `> ` } else { text += ` <` + urlPaste + `> ` }
+          text += ` <` + urlPaste + `> `;
         }
       }
     });
